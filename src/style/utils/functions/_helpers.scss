@@ -1,0 +1,29 @@
+@function is-valid-value($value) {
+    $units: px em rem vw vh vmin vmax '%';
+
+    @return index(0 'auto' 'inherit' 'initial', $value) or type-of($value) == 'number' and not unitless($value) and index($units, unit($value));
+}
+
+@function is-string($value) {
+    @return if(type-of($value) == 'string', true, false);
+}
+
+@function is-number($value) {
+    @return if(type-of($value) == 'number', true, false);
+}
+
+@function is-color($value) {
+    @return if(type-of($value) == 'color', true, false);
+}
+
+@function is-list($value) {
+    @return if(type-of($value) == 'list', true, false);
+}
+
+@function is-map($value) {
+    @return if(type-of($value) == 'map', true, false);
+}
+
+@function is-bool($value) {
+    @return if(type-of($value) == 'bool', true, false);
+}

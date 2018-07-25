@@ -1,0 +1,7 @@
+@function z($key) {
+    @if not map-has-key($z-layers, $key) {
+        @warn 'Unknown key "#{$key}" in $z-layers';
+    }
+
+    @return map-get($z-layers, $key);
+}

@@ -1,0 +1,12 @@
+@mixin fade($type, $duration: .4s, $property: null) {
+    @if index('show' 'hide', $type) and index('s' 'ms', unit($duration)) {
+        $show: $type == 'show';
+
+        visibility: if($show, visible, hidden);
+        opacity: if($show, 1, 0);
+        transition-property: visibility, opacity, $property;
+        transition-duration: $duration;
+    } @else {
+        @warn 'Invalid argument $type: #{$type} or $duration #{$duration}. Expected types: "show", "hide"';
+    }
+}

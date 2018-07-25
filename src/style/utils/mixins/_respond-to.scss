@@ -1,0 +1,11 @@
+@mixin respond-to($breakpoint) {
+    $media: map-get($breakpoints, $breakpoint) or media($breakpoint);
+
+    @if $media {
+        @media #{$media} {
+            @content;
+        }
+    } @else {
+        @warn 'Incorect breakpoint: #{$breakpoint}. Custom breakpoints should be comparable';
+    }
+}

@@ -1,0 +1,76 @@
+@mixin grid($breakpoint: null) {
+    @if $breakpoint {
+        @include respond-to($breakpoint) {
+            display: flex;
+            flex-wrap: wrap;
+        }
+    } @else {
+        display: flex;
+        flex-wrap: wrap;
+    }
+}
+
+@mixin grid-gutter($gutters...) {
+    @each $gutter in $gutters {
+        $length: length($gutter);
+
+        @if $length > 1 {
+            @include respond-to(nth($gutter, 1)) {
+                @if $length == 2 {
+                    @include make-gutter('x', nth($gutter, 2));
+                    @include make-gutter('y', nth($gutter, 2));
+                } @else {
+                    @include make-gutter('x', nth($gutter, 2));
+                    @include make-gutter('y', nth($gutter, 3));
+                }
+            }
+
+            > .col {
+                @content;
+            }
+
+        }  @else {
+            @warn 'Missing gutter value: #{$gutters}';
+        }
+    }
+}
+
+@mixin make-gutter($dirr, $gutter) {
+    @if is-valid-value($gutter) {
+        @if $dirr == 'x' {
+            margin-left: $gutter / -2;
+            margin-right: $gutter / -2;
+
+            > .col {
+                padding-left: $gutter / 2;
+                padding-right: $gutter / 2;
+            }
+        } @else {
+            > .col {
+                padding-bottom: $gutter;
+            }
+        }
+    } @else if $gutter != null {
+        @warn 'Invalid argument: #{$gutter}';
+    }
+}
+
+@mixin grid-cols {
+    > .col {
+        @content;
+    }
+}
+
+@mixin grid-col($columns...) {
+    @each $column in $columns {
+        $width: nth($column, 2);
+
+        @include respond-to(nth($column, 1)) {
+            @if is-valid-value($width) {
+                width: $width;
+            } @else {
+                @warn 'Invalid argument: #{$width}';
+            }
+        }
+    }
+}

@@ -1,0 +1,65 @@
+@import 'functions/media';
+
+// Path variables
+
+$url: (
+    img: '../img/css',
+    font: '../font'
+);
+
+
+// Color variables
+
+$colors: (
+);
+
+
+// Font variables
+
+$fonts: (
+);
+
+$font-fallback: 'sans-serif';
+
+
+// Media variables
+
+$mobile-wide: 576px;
+$tablet: 768px;
+$tablet-wide: 992px;
+$desktop: 1280px;
+
+$breakpoints: (
+    mobile: media(max $mobile-wide - 1),
+    mobile-wide: media(min $mobile-wide max $tablet),
+    mobiles: media(max $tablet - 1),
+    not-mobiles: media(min $tablet),
+    tablet: media(min $tablet max $tablet-wide - 1),
+    tablet-wide: media(min $tablet-wide max $desktop - 1),
+    tablets: media(min $tablet max $desktop - 1),
+    desktop: media(min $desktop),
+    not-desktop: media(max $desktop - 1)
+);
+
+
+// Layout variables
+
+$container: (
+    mobile: calc(100% - 40px),
+    mobile-wide: 540px,
+    tablet: 710px,
+    tablet-wide: 960px,
+    desktop: 1160px
+);
+
+$z-layers: (
+    min: -9999,
+    -1: -1,
+    0: 0,
+    1: 1,
+    2: 2,
+    3: 3,
+    4: 4,
+    5: 5,
+    max: 9999
+);

@@ -1,0 +1,7 @@
+.h-font {
+    @each $font in map-keys($fonts) {
+        &-#{$font} {
+            font-family: font($font);
+        }
+    }
+}

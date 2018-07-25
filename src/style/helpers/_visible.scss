@@ -1,0 +1,9 @@
+.h-visible {
+    @each $breakpoint, $value in $breakpoints {
+        &-#{$breakpoint} {
+            @media not all and #{$value} {
+                display: none !important;
+            }
+        }
+    }
+}

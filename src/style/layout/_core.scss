@@ -1,0 +1,22 @@
+.l-core {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+
+    &__header {
+        z-index: z(2);
+    }
+
+    &__main {
+        flex-grow: 1;
+        z-index: z(1);
+    }
+
+    &__footer {
+        z-index: z(0);
+    }
+}
+
+[class*='l-core__'] {
+    flex-shrink: 0;
+}

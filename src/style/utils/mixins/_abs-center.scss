@@ -1,0 +1,34 @@
+@mixin abs-center($offset: null, $value: null) {
+    @if not $offset and not $value {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    } @else {
+        $value: if($value == null, 0, $value);
+
+        @if index('top' 'left' 'bottom' 'right', $offset) and is-valid-value($value) {
+            position: absolute;
+
+            @if $offset == 'top' {
+                left: 50%;
+                top: $value;
+                transform: translateX(-50%);
+            } @else if $offset == 'right' {
+                top: 50%;
+                right: $value;
+                transform: translateY(-50%);
+            } @else if $offset == 'bottom' {
+                left: 50%;
+                bottom: $value;
+                transform: translateX(-50%);
+            } @else if $offset == 'left' {
+                top: 50%;
+                left: $value;
+                transform: translateY(-50%);
+            }
+        } @else {
+            @warn 'Invalid arguments $offset: #{$offset} or $value: #{$value}. Expected offsets: top, left, bottom, right';
+        }
+    }
+}

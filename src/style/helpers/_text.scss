@@ -1,0 +1,19 @@
+.h-text {
+    @each $prop in ('left', 'right', 'center', 'justify') {
+        &-align-#{$prop} {
+            text-align: #{$prop};
+        }
+    }
+
+    @each $prop in ('line-through', 'overline', 'underline', 'none') {
+        &-decoration-#{$prop} {
+            text-decoration: #{$prop};
+        }
+    }
+
+    @each $prop in ('capitalize', 'lowercase', 'uppercase', 'none') {
+        &-transform-#{$prop} {
+            text-transform: #{$prop};
+        }
+    }
+}

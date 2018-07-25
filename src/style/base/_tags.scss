@@ -1,0 +1,12 @@
+html {
+    overflow-x: hidden;
+}
+
+* {
+    box-sizing: border-box;
+
+    &:before,
+    &:after {
+        box-sizing: border-box;
+    }
+}

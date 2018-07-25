@@ -1,0 +1,36 @@
+@mixin text($type) {
+    @if $type == 'hide' {
+        font: 0/0 a;
+        color: transparent;
+        text-shadow: none;
+        background-color: transparent;
+        border: 0;
+
+    } @else if $type == 'normalize' {
+        font-style: normal;
+        font-weight: normal;
+        letter-spacing: normal;
+        line-break: auto;
+        line-height: normal;
+        text-align: left;
+        text-align: start;
+        text-decoration: none;
+        text-shadow: none;
+        text-transform: none;
+        white-space: normal;
+        word-break: normal;
+        word-spacing: normal;
+
+    } @else if $type == 'truncate' {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+
+    } @else if $type == 'break' {
+        word-break: break-all;
+        word-break: break-word;
+
+    } @else {
+        @warn 'Invalid argument $type: #{$type}';
+    }
+}

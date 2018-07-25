@@ -1,0 +1,9 @@
+@function font($key) {
+    $is-font: map-has-key($fonts, $key);
+
+    @if not $is-font {
+        @warn 'Unknown key "#{$key}" in $fonts';
+    }
+
+    @return if($is-font, #{map-get($fonts, $key) + ', ' + unquote($font-fallback)}, null);
+}

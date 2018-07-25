@@ -1,0 +1,7 @@
+.h-color {
+    @each $color in map-keys($colors) {
+        &-#{$color} {
+            color: color($color);
+        }
+    }
+}

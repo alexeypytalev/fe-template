@@ -1,0 +1,14 @@
+[class*='sg-link'] {
+    @include reset('form');
+
+    cursor: pointer;
+    text-decoration: none;
+
+    &:focus {
+        outline: none;
+    }
+
+    &:hover {
+        text-decoration: none;
+    }
+}

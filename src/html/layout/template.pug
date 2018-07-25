@@ -1,0 +1,18 @@
+include ../utils/variables/index
+include ../utils/mixins/index
+
+block var
+    - var pageClass = ''
+
+doctype html
+html
+    head
+        include ../head/head
+    body.l-core(class= pageClass ? pageClass : '')
+        .l-core__header
+            include ../components/header
+        .l-core__main
+            main.l-container
+                block main-content
+        .l-core__footer
+            include ../components/footer

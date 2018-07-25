@@ -1,0 +1,28 @@
+@function media($list) {
+    $media: null;
+
+    @if not is-list($list) {
+        @return $media;
+    }
+
+    $min: index($list, min);
+    $max: index($list, max);
+
+    $min-value: if($min, nth($list, $min + 1), null);
+    $max-value: if($max, nth($list, $max + 1), null);
+
+    $valid-min: is-valid-value($min-value);
+    $valid-max: is-valid-value($max-value);
+
+    @if $min and $max {
+        @if $valid-min and $valid-max and comparable($min-value, $max-value) {
+            $media: if($max-value > $min-value, '(min-width: #{$min-value}) and (max-width: #{$max-value})', '(min-width: #{$min-value}), (max-width: #{$max-value})');
+        }
+    } @else if $min and $valid-min {
+        $media: '(min-width: #{$min-value})';
+    } @else if $max and $valid-max {
+        $media: '(max-width: #{$max-value})';
+    }
+
+    @return $media;
+}

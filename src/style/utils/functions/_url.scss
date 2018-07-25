@@ -1,0 +1,18 @@
+@function file-url($url-type, $file: null) {
+    $url-value: map-get($url, $url-type);
+
+    @if not map-has-key($url, $url-type) {
+        @warn 'Unknown key "#{$url-type}" in $url';
+        @return null;
+    }
+
+    @return $url-value + '/' + $file;
+}
+
+@function img-url($file) {
+    @return url(file-url('img', $file));
+}
+
+@function font-url($file) {
+    @return url(file-url('font', $file));
+}
