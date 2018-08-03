@@ -1,5 +1,5 @@
 [class*='sg-link'] {
-    @include reset('form');
+    @include reset-form;
 
     cursor: pointer;
     text-decoration: none;

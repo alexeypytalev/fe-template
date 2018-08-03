@@ -1,6 +1,6 @@
 [class*='sg-btn'] {
-    @include reset('form');
-    @include text('truncate');
+    @include reset-form;
+    @include text-truncate;
 
     text-align: center;
     cursor: pointer;
